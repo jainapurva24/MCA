@@ -1,0 +1,1559 @@
+Linear Search:
+
+#include<stdio.h>
+
+int main() {
+    int a[100], search, i, n;
+    
+    printf("Enter number of elements in array: ");
+    scanf("%d", &n);
+
+    printf("Enter %d integers: ", n);
+    for (i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printf("Enter a number to search: ");
+    scanf("%d", &search);
+
+    for (i = 0; i < n; i++) {
+        if (a[i] == search) {
+            printf("%d is present at position %d\n", search, i + 1);
+            break;
+        }
+    }
+
+    if (i == n) {
+        printf("%d is not present\n", search);
+    }
+
+    return 0;
+}
+
+
+
+Binary Search:
+
+#include <stdio.h>
+
+int main() {
+    int c, first, last, middle, n, search, array[200];
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter %d integers: ", n);
+    for (c = 0; c < n; c++)
+        scanf("%d", &array[c]);
+
+    printf("Enter value to find: ");
+    scanf("%d", &search);
+
+    first = 0;
+    last = n - 1;
+    middle = (first + last) / 2;
+
+    while (first <= last) {
+        if (array[middle] < search)
+            first = middle + 1;
+        else if (array[middle] == search) {
+            printf("%d found at location %d.\n", search, middle + 1);
+            break;
+        } else
+            last = middle - 1;
+
+        middle = (first + last) / 2;
+    }
+
+    if (first > last)
+        printf("Not found! %d isn't present in the list.\n", search);
+
+    return 0;
+}
+Write a program to implement Bubble Sort.
+Code:
+
+#include <stdio.h>
+int main()
+{
+int a[50], num, i, j, temp;
+printf("Please Enter the Number of Elements you want in the array: ");
+scanf("%d", &num);
+printf("Please Enter the Value of Elements: ");
+for(i = 0; i < num; i++)
+scanf("%d", &a[i]);
+for(i = 0; i < num - 1; i++)
+{
+for(j = 0; j < num - i - 1; j++){
+if(a[j] > a[j+ 1])
+{
+temp = a[j];
+a[j] = a[j + 1];
+a[j + 1] = temp;
+}
+}
+}
+printf("Array after implementing bubble sort: ");
+for(i = 0; i < num; i++){
+printf("%d ", a[i]);
+}
+return 0;
+}
+
+
+
+
+Write a program to implement Linear Search.
+Code:
+
+#include<stdio.h>
+int main()
+{
+int a[100],search,i,n;
+printf("Enter number of elements in array\n");
+scanf("%d",&n);
+printf("Enter number of %d integer",n);
+for(i=0;i<n;i++)
+scanf("%d",&a[i]);
+printf("Enter a number to search");
+scanf("%d",&search);
+for(i=0;i<n;i++)
+if(a[i]==search)
+{
+}
+if(i==n)
+printf("%d is present %d\n",search,i+1);
+break;
+printf("%d is not present",search);
+}
+
+
+
+
+Write a menu driven program to implement the following String Operations.
+1) uppercase 4) strcat
+2) lowercase 5) strcpy
+3) strlen 6) strcmp
+Code:
+
+#include <stdio.h>
+void myUppercase() {
+ char str[100];
+ printf("Enter a string: ");
+ gets(str);
+ for (int i = 0; str[i]; i++) {
+ if (str[i] >= 'a' && str[i] <= 'z') {
+ str[i] = str[i] - 32;
+ }
+ }
+ printf("Uppercase string: %s\n", str);
+}
+void myLowercase() {
+ char str[100];
+ printf("Enter a string: ");
+ gets(str);
+ for (int i = 0; str[i]; i++) {
+ if (str[i] >= 'A' && str[i] <= 'Z') {
+ str[i] = str[i] + 32;
+ }
+ }
+ printf("Lowercase string: %s\n", str);
+}
+
+int myStringLength() {
+ char str[100];
+ printf("Enter a string: ");
+ gets(str);
+ int length = 0;
+ for (int i = 0; str[i]; i++) {
+length++;
+
+}
+ printf("Length of the string: %d
+\n", length);
+ return length; }
+void myStringConcatenation() {
+ char str1[100], str2[100];
+ printf("Enter the first string: ");
+ gets(str1);
+ printf("Enter the second string: ");
+ gets(str2);
+ int i = 0, j = 0;
+ while (str1[i] != '
+\0') {
+ i++;
+
+}
+ while (str2[j] != '
+\0') {
+ str1[i] = str2[j];
+ i++;
+ j++;
+
+}
+ str1[i] = '
+\0';
+ printf("Concatenated string: %s
+\n", str1);
+}
+void myStringCopy() {
+ char str1[100], str2[100];
+ printf("Enter a string to copy: ");
+ gets(str1);
+ int i = 0;
+ while (str1[i] != '
+\0') {
+ str2[i] = str1[i];
+ i++;
+
+}
+ str2[i] = '
+\0';
+ printf("Copied string: %s
+\n", str2);
+}
+
+int myStringComparison() {
+ char str1[100], str2[100];
+ printf("Enter the first string: ");
+ gets(str1);
+ printf("Enter the second string: ");
+ gets(str2);
+ int i = 0;
+ while (str1[i] != '
+\0' && str2[i] != '
+\0') {
+ if (str1[i] != str2[i]) {
+ printf("Strings are not equal.
+\n");
+ return
+-1;
+
+}
+ i++;
+
+}
+ if (str1[i] == '
+\0' && str2[i] == '
+\0') {
+ printf("Strings are equal.
+\n");
+ return 0;
+ } else {
+ printf("Strings are not equal.
+\n");
+ return 1;
+
+}
+}
+int main() {
+ int choice;
+ while (1) {
+ printf("\nString Operations Menu:\n");
+ printf("1. Uppercase\n");
+ printf("2. Lowercase\n");
+ printf("3. String Length\n");
+ printf("4. String Concatenation\n");
+ printf("5. String Copy\n");
+ printf("6. String Comparison\n");
+ printf("7. Exit\n");
+ printf("Enter your choice: ");
+ scanf("%d", &choice);
+ getchar(); // Consume the newline character left in the input buffer
+ switch (choice) {
+ case 1:
+ myUppercase();
+ break;
+ case 2:
+ myLowercase();
+ break;
+ case 3:
+ myStringLength();
+ break;
+ case 4:
+ myStringConcatenation();
+ break;
+ case 5:
+ myStringCopy();
+ break;
+ case 6:
+ myStringComparison();
+ break;
+ case 7:
+ printf("Exiting the program. Goodbye!\n");
+ return 0;
+ default:
+ printf("Invalid choice. Please enter a valid option.\n");
+ }
+ }
+ return 0;
+}
+
+
+
+
+
+Write a program which do multiplication of 2
+matrix.
+Code:
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+int a[10][10],b[10][10],mul[10][10],r,c,i,j,k;
+system("cls");
+printf("enter the number of row=");
+scanf("%d",&r);
+printf("enter the number of column=");
+scanf("%d",&c);
+printf("enter the first matrix element=\n");
+for(i=0;i<r;i++)
+{
+for(j=0;j<c;j++)
+{
+scanf("%d",&a[i][j]);
+}
+}
+printf("enter the second matrix element=\n");
+for(i=0;i<r;i++)
+{
+for(j=0;j<c;j++)
+{
+scanf("%d",&b[i][j]);
+}
+}
+printf("multiply of the matrix=\n");
+for(i=0;i<r;i++)
+{
+for(j=0;j<c;j++)
+{
+mul[i][j]=0;
+for(k=0;k<c;k++)
+{
+mul[i][j]+=a[i][k]*b[k][j];
+}
+}
+}
+for(i=0;i<r;i++)
+{
+for(j=0;j<c;j++)
+{
+printf("%d\t",mul[i][j]);
+}
+printf("\n");
+}
+return 0;
+}
+
+
+
+
+
+Write a program to implement Quick Sort
+Code:
+
+#include<stdio.h>
+void quicksort(int number[25],int first,int last)
+{
+int i, j, pivot, temp;
+if(first<last){
+pivot=first;
+i=first;
+j=last;
+while(i<j){
+while(number[i]<=number[pivot]&&i<last)
+i++;
+while(number[j]>number[pivot])j--
+;
+if(i<j){ temp=number[i];
+number[i]=number[j];
+number[j]=temp;
+}
+}
+temp=number[pivot];
+number[pivot]=number[j];
+number[j]=temp;
+quicksort(number,first,j-1);
+quicksort(number,j+1,last);
+}
+}
+int main()
+{
+int i, count, number[25];
+printf("How many elements are u going to enter?: ");
+scanf("%d",&count);
+printf("Enter %d elements: ", count);
+for(i=0;i<count;i++)
+scanf("%d",&number[i]);
+quicksort(number,0,count-1);
+printf("Order of Sorted elements: ");
+for(i=0;i<count;i++)
+printf(" %d",number[i]);
+return 0;
+}
+
+
+
+
+
+Write a program to implement Selection Sort.
+Code:
+
+#include <stdio.h>
+int main()
+{
+int arr[50],n;
+int i, j, position, swap;
+printf("Please Enter the Number of Elements you want in the array: ");
+scanf("%d",&n);
+printf("Please Enter the Value of Elements: ");
+for(i=0;i<n;i++)
+scanf("%d",&arr[i]);
+for (i = 0; i < (n - 1); i++)
+{
+position = i;
+for (j = i + 1; j < n; j++)
+{
+if (arr[position] > arr[j])
+position = j;
+}
+if (position != i)
+{
+swap = arr[i];
+arr[i] = arr[position];
+arr[position] = swap;
+}
+}
+printf("Array after implementing Selection sort: ");
+for (i = 0; i < n; i++)
+printf("%d\t", arr[i]);
+return 0;
+}
+
+
+
+
+
+
+Write a program to implement Stack Operation.
+Code:
+#include<stdio.h>
+#include<conio.h>
+#define N 5
+int stack[N];
+int top =-1;
+int i,j;
+void push();
+void pop();
+void dis(); void
+update();int
+main(){
+int ch;
+do
+{
+printf("\n");
+printf("1.FOR PUSH \n");
+printf("2.FOR POP \n");
+printf("3.FOR DIS \n");
+printf("4.FOR Update \n");
+printf("5.FOR Exit \n");
+scanf("%d",&ch);
+switch (ch)
+{
+case 1:
+push();
+break;
+case 2:
+pop();
+break;
+case 3:
+dis();
+break;
+case 4:
+update();
+break;
+default:
+break;
+}
+} while (ch!=5);
+return 0; }
+void push(){ if
+(top==N
+-1)
+{
+printf("Stack is full");
+}
+else{
+int val;
+printf("Enter the value :");
+scanf("%d",&val)
+;
+top++; stack[top] = val;
+}}
+void dis(){
+printf("
+\n");
+for (int i = 0; i <=top; i++) {
+printf(" %d ",stack[i]);
+}
+}
+void pop(){
+if (top==
+-1)
+{
+printf("Stackk is EMpty");
+}
+else{
+int popedel = stack[top];
+top--
+;
+printf("POPED ELEMENT IS
+: %d", popedel);
+dis();
+}
+}
+void update(){
+int idx,newval; printf("Enter
+the Index :");
+scanf("%d",&idx);
+if (idx<0 || idx>top)
+{
+printf("INVALID INDEX \n");
+}
+else{
+printf("Enter the value for Update :");
+scanf("%d",&newval);
+stack[idx] = newval;
+printf(" UPDATED VALUE %d at INDEX %d",newval,idx);dis();
+}
+}
+
+
+
+
+
+
+Write a program to implement Binary Search.
+Code:
+
+#include <stdio.h>
+int main()
+{
+int i, low, high, mid, n, key, array[100];
+printf("Enter number of elements:");
+scanf("%d",&n);
+printf("Enter %d integers", n);
+for(i = 0; i < n; i++)
+scanf("%d",&array[i]);
+printf("Enter value to find");
+scanf("%d", &key);
+low = 0;
+high = n - 1;
+mid = (low+high)/2;
+while (low <= high)
+{
+if(array[mid] < key)
+{
+low = mid + 1;
+}
+else if (array[mid] == key)
+{
+printf("%d found at location %d.n", key, mid+1);
+break;
+}
+else
+high = mid - 1;
+mid = (low + high)/2;
+}
+if(low > high)
+printf("Not found! %d isn't present in the list.n", key);
+return 0;
+}
+
+
+
+
+
+Write a program to implement Infix to Postfix Operation. 
+Code: 
+#include <stdio.h> #include <stdlib.h> #include <string.h> 
+#define MAX_SIZE 100 
+struct Stack { 
+char items[MAX_SIZE]; int top; 
+}; 
+void initialize(struct Stack* stack) { stack->top = -1; 
+} 
+int isEmpty(struct Stack* stack) { return stack->top == -1; 
+} 
+void push(struct Stack* stack, char item) { stack->items[++stack->top] = item; 
+} 
+char pop(struct Stack* stack) { if (!isEmpty(stack)) { 
+return stack->items[stack->top--]; 
+} 
+19 
+DSA MTCA13101 
+return '\0'; // Null character represents an empty stack 
+} 
+char peek(struct Stack* stack) { 
+if (!isEmpty(stack)) { 
+return stack->items[stack->top]; 
+} 
+return '\0'; // Null character represents an empty stack 
+} 
+int isOperator(char c) { 
+return (c == '+' || c == '-' || c == '*' || c == '/'); 
+} 
+int getPrecedence(char c) { if (c == '+' || c == '-') 
+return 1; 
+if (c == '*' || c == '/') return 2; 
+return 0; 
+} 
+void infixToPostfix(const char* infix, char* postfix) { struct Stack operatorStack; initialize(&operatorStack); 
+int postfixIndex = 0; 
+for (int i = 0; infix[i]; i++) { char currentChar = infix[i]; 
+if (isalnum(currentChar)) { postfix[postfixIndex++] = currentChar; 
+} else if (currentChar == '(') { push(&operatorStack, currentChar); 
+} else if (currentChar == ')') { 
+while (!isEmpty(&operatorStack) && peek(&operatorStack) != '(') { 
+postfix[postfixIndex++] = pop(&operatorStack); 
+} 
+if (!isEmpty(&operatorStack) && peek(&operatorStack) != '(') { printf("Invalid expression\n"); 
+return; 
+} else { 
+pop(&operatorStack); // Pop the opening parenthesis 
+} 
+20 
+} else if (isOperator(currentChar)) { 
+DSA MTCA13101 
+while (!isEmpty(&operatorStack) && getPrecedence(currentChar) <= getPrecedence(peek(&operatorStack))) { 
+postfix[postfixIndex++] = pop(&operatorStack); 
+} 
+push(&operatorStack, currentChar); 
+} 
+} 
+while (!isEmpty(&operatorStack)) { 
+char topOperator = pop(&operatorStack); if (topOperator == '(') { 
+printf("Invalid expression\n"); return; 
+} 
+postfix[postfixIndex++] = topOperator; 
+} 
+postfix[postfixIndex] = '\0'; 
+} 
+int main() { 
+char infix[MAX_SIZE]; char postfix[MAX_SIZE];  
+printf("Enter an infix expression: "); fgets(infix, sizeof(infix), stdin); 
+infixToPostfix(infix, postfix); 
+printf("Postfix Expression: %s\n", postfix); 
+return 0; 
+}
+
+
+
+
+
+
+Write a program to perform the INSERT and 
+DELETE operations on a simple queue using linked list.
+
+#include <stdio.h> 
+#include <stdlib.h> 
+struct Node { 
+int data; 
+struct Node *next; 
+}; 
+struct Queue { 
+struct Node *front, *rear; 
+}; 
+struct Node* createNode(int data) { 
+struct Node* newNode = (struct Node*)malloc(sizeof(struct Node)); 
+newNode->data = data; 
+newNode->next = NULL; 
+return newNode; 
+} 
+struct Queue* createQueue() { 
+struct Queue* queue = (struct Queue*)malloc(sizeof(struct Queue)); 
+queue->front = queue->rear = NULL; 
+return queue; 
+} 
+int isEmpty(struct Queue* queue) { 
+return (queue->front == NULL); 
+} 
+void enqueue(struct Queue* queue, int data) { 
+ if (isEmpty(queue)) { 
+queue->front = queue->rear = newNode; 
+} else { 
+queue->rear->next = newNode; 
+queue->rear = newNode; 
+} 
+printf("Enqueued: %d\n", data); 
+} 
+void dequeue(struct Queue* queue) { 
+if (isEmpty(queue)) 
+{ 
+printf("Queue is empty. Nothing to dequeue.\n"); 
+return; 
+} 
+struct Node* temp = queue->front; 
+queue->front = temp->next; 
+if (queue->front == NULL) { 
+queue->rear = NULL; 
+} 
+printf("Dequeued: %d\n", temp->data); 
+free(temp); 
+} 
+void display(struct Queue* queue) { 
+if (isEmpty(queue)) { 
+printf("Queue is empty.\n"); 
+return; 
+ } 
+printf("Queue: "); 
+struct Node* temp = queue->front; 
+while (temp != NULL) { 
+printf("%d ", temp->data); 
+temp = temp->next; 
+} 
+printf("\n"); 
+} 
+void freeQueue(struct Queue* queue) { 
+while (!isEmpty(queue)) { 
+dequeue(queue); 
+} 
+free(queue); 
+} 
+int main() { 
+struct Queue* queue = createQueue(); 
+int choice, data; 
+while (1) { 
+printf("\nQueue Operations:\n"); 
+printf("1. Enqueue (Insert)\n"); 
+printf("2. Dequeue (Delete)\n"); 
+printf("3. Display\n"); 
+printf("4. Exit\n"); 
+printf("Enter your choice: "); 
+scanf("%d", &choice); 
+switch (choice) { 
+case 1: 
+ printf("Enter the value to enqueue: "); 
+scanf("%d", &data); 
+enqueue(queue, data); 
+break; 
+case 2: 
+dequeue(queue); 
+break; 
+case 3: 
+display(queue); 
+break; 
+case 4: 
+printf("Exiting the program. Bye!\n"); 
+freeQueue(queue); 
+exit(0); 
+default: 
+printf("Invalid choice. Please enter a valid option.\n"); 
+} 
+} 
+return 0; 
+} 
+
+
+
+
+
+Write a menu driven program to perform the 
+following  Linked list operation  :- 
+1.insert at beginning 
+2.insert at end  
+3.insert at particular position 
+4.delete from beginning  
+5. Delete from end 
+6.delete from particular position
+
+#include <stdio.h> 
+#include <stdlib.h> 
+struct Node { 
+int data; 
+struct Node *next; 
+}; 
+struct Node *head = NULL; 
+ void insertAtBeginning(int data) { 
+struct Node *newNode = (struct Node *)malloc(sizeof(struct Node)); 
+newNode->data = data; 
+newNode->next = head; 
+head = newNode; 
+printf("Inserted %d at the beginning\n", data); 
+} 
+void insertAtEnd(int data) { 
+struct Node *newNode = (struct Node *)malloc(sizeof(struct Node)); 
+newNode->data = data; 
+newNode->next = NULL; 
+if (head == NULL) { 
+head = newNode; 
+} else { 
+struct Node *temp = head; 
+while (temp->next != NULL) { 
+temp = temp->next; 
+} 
+temp->next = newNode; 
+} 
+printf("Inserted %d at the end\n", data); 
+} 
+void insertAtPosition(int data, int position) { 
+struct Node *newNode = (struct Node *)malloc(sizeof(struct Node)); 
+newNode->data = data; 
+newNode->next = NULL; 
+if (position == 1) { 
+newNode->next = head; 
+head = newNode; 
+} else { 
+ struct Node *temp = head; 
+int i; 
+for ( i = 1; i < position - 1 && temp != NULL; i++) { 
+temp = temp->next; 
+} 
+if (temp == NULL) { 
+printf("Invalid position\n"); 
+return; 
+} 
+newNode->next = temp->next; 
+temp->next = newNode; 
+} 
+printf("Inserted %d at position %d\n", data, position); 
+} 
+void deleteFromBeginning() { 
+if (head == NULL) { 
+printf("List is empty. Nothing to delete.\n"); 
+} else { 
+struct Node *temp = head; 
+head = head->next; 
+printf("Deleted from the beginning: %d\n", temp->data); 
+free(temp); 
+} 
+} 
+void deleteFromEnd() { 
+if (head == NULL) { 
+printf("List is empty. Nothing to delete.\n"); 
+} else if (head->next == NULL) { 
+printf("Deleted from the end: %d\n", head->data); 
+free(head); 
+head = NULL; 
+} else {
+
+ struct Node *temp = head; 
+while (temp->next->next != NULL) { 
+temp = temp->next; 
+} 
+printf("Deleted from the end: %d\n", temp->next->data); 
+free(temp->next); 
+temp->next = NULL; 
+} 
+} 
+void deleteFromPosition(int position) { 
+if (head == NULL) { 
+printf("List is empty. Nothing to delete.\n"); 
+} else if (position == 1) { 
+struct Node *temp = head; 
+head = head->next; 
+printf("Deleted from position %d: %d\n", position, temp->data); 
+free(temp); 
+} else { 
+struct Node *temp = head; 
+int i; 
+for ( i = 1; i < position - 1 && temp != NULL; i++) { 
+temp = temp->next; 
+} 
+if (temp == NULL || temp->next == NULL) { 
+printf("Invalid position\n"); 
+return; 
+} 
+struct Node *deletedNode = temp->next; 
+temp->next = temp->next->next; 
+printf("Deleted from position %d: %d\n", position, deletedNode->data); 
+free(deletedNode); 
+} 
+} 
+
+ void display() { 
+struct Node *temp = head; 
+printf("Linked List: "); 
+while (temp != NULL) { 
+printf("%d ", temp->data); 
+temp = temp->next; 
+} 
+printf("\n"); 
+} 
+int main() { 
+int choice, data, position; 
+while (1) { 
+printf("\nLinked List Operations:\n"); 
+printf("1. Insert at Beginning\n"); 
+printf("2. Insert at End\n"); 
+printf("3. Insert at Particular Position\n"); 
+printf("4. Delete from Beginning\n"); 
+printf("5. Delete from End\n"); 
+printf("6. Delete from Particular Position\n"); 
+printf("7. Display Linked List\n"); 
+printf("8. Exit\n"); 
+printf("Enter your choice: "); 
+scanf("%d", &choice); 
+switch (choice) { 
+case 1: 
+printf("Enter the value to insert at the beginning: "); 
+scanf("%d", &data); 
+insertAtBeginning(data); 
+
+ break; 
+case 2: 
+printf("Enter the value to insert at the end: "); 
+scanf("%d", &data); 
+insertAtEnd(data); 
+break; 
+case 3: 
+printf("Enter the value to insert: "); 
+scanf("%d", &data); 
+printf("Enter the position to insert at: "); 
+scanf("%d", &position); 
+insertAtPosition(data, position); 
+break; 
+case 4: 
+deleteFromBeginning(); 
+break; 
+case 5: 
+deleteFromEnd(); 
+break; 
+case 6: 
+printf("Enter the position to delete from: "); 
+scanf("%d", &position); 
+deleteFromPosition(position); 
+break; 
+case 7: 
+display(); 
+break; 
+case 8: 
+printf("Exiting the program. Bye!\n"); 
+exit(0); 
+default: 
+printf("Invalid choice. Please enter a valid option.\n"); 
+} 
+}
+ return 0; 
+} 
+
+
+
+
+
+
+Write a program to perform the INSERT and 
+DELETE operations on a Dequeue. 
+#include <stdio.h> 
+#define MAX_SIZE 10 
+struct Deque { 
+int front, rear; 
+int array[MAX_SIZE]; 
+}; 
+void initializeDeque(struct Deque *deque) { 
+deque->front = -1; 
+deque->rear = -1; 
+} 
+int isEmpty(struct Deque *deque) { 
+return (deque->front == -1); 
+} 
+int isFull(struct Deque *deque) { 
+return ((deque->rear + 1) % MAX_SIZE == deque->front);} 
+void insertRear(struct Deque *deque, int value) { 
+if (isFull(deque)) { 
+printf("Deque is full. Cannot insert element at the rear.\n"); 
+return;  
+} 
+if (isEmpty(deque)) { 
+deque->front = deque->rear = 0; 
+} else { 
+deque->rear = (deque->rear + 1) % MAX_SIZE; } 
+deque->array[deque->rear] = value; 
+printf("Element %d inserted at the rear of the deque.\n", value); } 
+void deleteFront(struct Deque *deque) { 
+if (isEmpty(deque)) { 
+printf("Deque is empty. Cannot delete element from the front.\n"); 
+return; 
+} 
+printf("Element %d deleted from the front of the deque.\n", deque->array[deque->front]);  
+if (deque->front == deque->rear) { 
+deque->front = deque->rear = -1; 
+} else { 
+deque->front = (deque->front + 1) % MAX_SIZE; }} 
+void display(struct Deque *deque) { 
+if (isEmpty(deque)) { 
+printf("Deque is empty.\n"); 
+return; 
+} 
+printf("Deque elements: "); 
+int i = deque->front;
+
+  do { 
+        printf("%d ", deque->array[i]); 
+        i = (i + 1) % MAX_SIZE; 
+    } while (i != (deque->rear + 1) % MAX_SIZE); 
+    printf("\n");} 
+     
+int main() { 
+    struct Deque myDeque; 
+    initializeDeque(&myDeque);  
+    int choice, value;  
+    do { 
+        printf("\nDeque Menu:\n"); 
+        printf("1. Insert \n"); 
+        printf("2. Delete \n"); 
+        printf("3. Display\n"); 
+        printf("4. Exit\n"); 
+        printf("Enter your choice: "); 
+        scanf("%d", &choice); 
+        switch (choice) { 
+            case 1: 
+                printf("Enter the element to insert at the rear: "); 
+                scanf("%d", &value); 
+                insertRear(&myDeque, value); 
+                break; 
+            case 2: 
+                deleteFront(&myDeque); 
+                break; 
+            case 3: 
+                display(&myDeque); 
+                break; 
+            case 4: 
+                printf("Exiting the program.\n"); 
+                break; 
+            default: 
+                printf("Invalid choice. Please enter a valid option.\n"); 
+    } 
+    } while (choice != 4); 
+  
+}
+
+
+
+
+
+Write a program to perform the INSERT and 
+DELETE operations on a circular queue  
+#include <stdio.h> 
+#define MAX_SIZE 10 
+struct CircularQueue { 
+int front, rear; 
+int array[MAX_SIZE]; 
+}; 
+void initializeQueue(struct CircularQueue *queue) { 
+queue->front = -1; 
+queue->rear = -1; 
+} 
+int isEmpty(struct CircularQueue *queue) { 
+return (queue->front == -1);  
+} 
+int isFull(struct CircularQueue *queue) { 
+return ((queue->rear + 1) % MAX_SIZE == queue->front);  
+} 
+void insert(struct CircularQueue *queue, int value) { 
+ if (isFull(queue)) { 
+        printf("Queue is full. Cannot insert element.\n"); 
+        return; 
+   } 
+    if (isEmpty(queue)) { 
+        queue->front = 0; 
+   } 
+    queue->rear = (queue->rear + 1) % MAX_SIZE; 
+    queue->array[queue->rear] = value; 
+    printf("Element %d inserted into the circular queue.\n", value); } 
+void delete(struct CircularQueue *queue) { 
+    if (isEmpty(queue)) { 
+        printf("Queue is empty. Cannot delete element.\n"); 
+return;     
+} 
+    printf("Element %d deleted from the circular queue.\n", queue->array[queue->front]); 
+ 
+    if (queue->front == queue->rear) { 
+                queue->front = queue->rear = -1; 
+    } else { 
+        queue->front = (queue->front + 1) % MAX_SIZE; }} 
+void display(struct CircularQueue *queue) { 
+    if (isEmpty(queue)) { 
+        printf("Queue is empty.\n");return; } 
+    printf("Circular Queue elements: "); 
+    int i = queue->front; 
+    do { 
+        printf("%d ", queue->array[i]); 
+        i = (i + 1) % MAX_SIZE; 
+    } while (i != (queue->rear + 1) % MAX_SIZE); 
+    printf("\n");} 
+int main() { 
+    struct CircularQueue myQueue; 
+    initializeQueue(&myQueue); 
+    int choice, value; 
+    do { 
+        printf("\nCircular Queue Menu:\n"); 
+        printf("1. Insert (Enqueue)\n"); 
+        printf("2. Delete (Dequeue)\n"); 
+        printf("3. Display\n"); 
+        printf("4. Exit\n"); 
+        printf("Enter your choice: "); 
+        scanf("%d", &choice); 
+        switch (choice) { 
+            case 1: 
+                printf("Enter the element to insert: "); 
+                scanf("%d", &value); 
+
+ insert(&myQueue, value); 
+break; 
+case 2: 
+delete(&myQueue); 
+break; 
+case 3: 
+display(&myQueue); 
+break; 
+case 4: 
+printf("Exiting the program.\n"); 
+break; 
+default: 
+printf("Invalid choice. Please enter a valid option.\n");} 
+} while (choice != 4); 
+return 0; 
+} 
+
+
+
+
+
+Write a program to perform the INSERT and 
+DELETE operations on a simple queue using array. 
+
+#include<stdio.h> 
+#include<conio.h> 
+#define n 10 
+int Queue[n]; 
+void push(int x); 
+void dis(); 
+void del(); 
+int frot = -1; 
+int rear = -1; 
+void push(int x) { 
+if (rear == n - 1) { 
+printf("Queue is full Now\t"); 
+} else if (frot == -1 && rear == -1) { 
+frot = rear = 0; 
+Queue[rear] = x; 
+} else { 
+rear++; 
+Queue[rear] = x;  }} 
+void del() { 
+if (frot == -1 && rear == -1) { 
+printf("Queue is Empty\n"); 
+} else if (frot == rear) { 
+printf("Deleted element: %d\n", Queue[frot]); 
+frot = rear = -1; 
+} else { 
+printf("Deleted element: %d\n", Queue[frot]); 
+frot++;}} 
+void dis() { 
+int i; 
+if (frot == -1 && rear == -1) {
+ printf("Queue is Empty\n"); 
+} else { 
+printf("Queue elements: "); 
+for ( i = frot; i <= rear; i++) { 
+printf(" %d ", Queue[i]); } 
+printf("\n");  }} 
+int main() { 
+int ch = 0; 
+int data; 
+do { 
+printf("\n1. FOR PUSH\n"); 
+printf("2. FOR DIS\n"); 
+printf("3. FOR DELETE\n"); 
+printf("4. FOR EXIT\n"); 
+printf("Enter your choice: "); 
+scanf("%d", &ch); 
+switch (ch) { 
+case 1: 
+printf("Enter the Data: "); 
+scanf("%d", &data); 
+push(data); 
+break; 
+case 2: 
+dis(); 
+break; 
+case 3: 
+del(); 
+break; 
+case 4: 
+printf("Exiting the program.\n"); 
+break; 
+default: 
+printf("Invalid choice. Please enter a valid option.\n"); 
+break; }
+
+ } while (ch != 4);    
+return 0; 
+}
+
+
+
+
+
+
+Write a program to implement Insertion sort.
+ 
+#include <stdio.h> 
+void insertionSort(int arr[], int n) { 
+int i, key, j; 
+for (i = 1; i < n; i++) { 
+key = arr[i]; 
+j = i - 1; 
+while (j >= 0 && arr[j] > key) { 
+arr[j + 1] = arr[j]; 
+j = j - 1;        } 
+arr[j + 1] = key; }} 
+void printArray(int arr[], int size) { 
+int i; 
+for ( i = 0; i < size; i++) 
+printf("%d ", arr[i]); 
+printf("\n");} 
+int main() {
+
+ int n; 
+int i; 
+printf("Enter the number of elements: "); 
+scanf("%d", &n); 
+int arr[n]; 
+printf("Enter the elements:\n"); 
+for ( i = 0; i < n; i++) { 
+scanf("%d", &arr[i]);    } 
+printf("Original array: "); 
+printArray(arr, n); 
+insertionSort(arr, n); 
+printf("Sorted array: "); 
+printArray(arr, n); 
+return 0;} 
+
+
+
+
+
+
+Write a  program to implement Marge Sort 
+
+#include <stdio.h> 
+#define MAX_SIZE 100 
+void merge(int arr[], int left, int mid, int right) { 
+int i, j, k; 
+int n1 = mid - left + 1; 
+int n2 = right - mid; 
+int L[n1]; 
+int R[n2]; 
+for (i = 0; i < n1; i++) 
+L[i] = arr[left + i]; 
+for (j = 0; j < n2; j++) 
+R[j] = arr[mid + 1 + j]; 
+i = 0; 
+j = 0; 
+k = left; 
+while (i < n1 && j < n2) { 
+if (L[i] <= R[j]) { 
+arr[k] = L[i]; 
+i++; 
+} else { 
+arr[k] = R[j]; 
+j++;   } 
+k++;} 
+while (i < n1) { 
+arr[k] = L[i]; 
+i++; 
+k++; 
+} 
+while (j < n2) { 
+arr[k] = R[j]; 
+
+ j++; 
+k++;}} 
+void mergeSort(int arr[], int left, int right) { 
+if (left < right) { 
+int mid = left + (right - left) / 2; 
+mergeSort(arr, left, mid); 
+mergeSort(arr, mid + 1, right); 
+merge(arr, left, mid, right);  } 
+} 
+void printArray(int arr[], int size) { 
+int i; 
+for (i = 0; i < size; i++) 
+printf("%d ", arr[i]); 
+printf("\n");} 
+int main() { 
+int n; 
+printf("Enter the number of elements (up to %d): ", MAX_SIZE); 
+scanf("%d", &n);  
+if (n <= 0 || n > MAX_SIZE) { 
+printf("Invalid input for the number of elements.\n"); 
+return 1; } 
+int arr[MAX_SIZE]; 
+printf("Enter %d elements:\n", n); 
+int i; 
+for ( i = 0; i < n; i++) { 
+scanf("%d", &arr[i]); } 
+printf("Original array: "); 
+printArray(arr, n); 
+mergeSort(arr, 0, n - 1);  
+printf("Sorted array: "); 
+printArray(arr, n);  
+return 0; }
+
+
+
+
+
+
+Write a program to evaluate a postfix 
+expression. 
+
+#include <stdio.h> 
+#define MAX_SIZE 50 
+int stack[MAX_SIZE]; 
+int top = -1; 
+void push(int item) { 
+if (top >= MAX_SIZE - 1) { 
+printf("Stack Overflow\n"); } 
+top++; 
+stack[top] = item; } 
+int pop() { 
+if (top < 0) { 
+printf("Stack Underflow\n");} 
+int item = stack[top]; 
+top--; 
+return item; } 
+int is_operator(char symbol) { 
+return (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/'); 
+} 
+int evaluate(char* expression) { 
+int i = 0; 
+char symbol = expression[i]; 
+int operand1, operand2, result; 
+while (symbol != '\0') { 
+if (isdigit(symbol)) { 
+int num = symbol - '0'; 
+push(num); 
+} else if (is_operator(symbol)) { 
+operand2 = pop(); 
+operand1 = pop(); 
+switch(symbol) {
+ case '+': result = operand1 + operand2; break; 
+case '-': result = operand1 - operand2; break; 
+case '*': result = operand1 * operand2; break; 
+case '/': result = operand1 / operand2; break;          } 
+push(result); } 
+i++; 
+symbol = expression[i]; } 
+result = pop(); 
+return result; } 
+int main() { 
+char expression[MAX_SIZE]; 
+printf("Enter a postfix expression: "); 
+scanf("%s", expression); 
+int result = evaluate(expression); 
+printf("Result= %d\n", result);  
+return 0; 
+} 
+
+
+
+
+
+
+Write a program to implement Infix to Postfix 
+Operation. 
+Code:
+
+#include <stdio.h> 
+#include <string.h> 
+#define MAX 100 
+char stk[MAX]; 
+int top = -1; 
+int isEmpty() 
+{ 
+} 
+return top == -1;
+
+int isFull() 
+{ 
+} 
+return top == MAX - 1; 
+char peek() 
+{ 
+} 
+return stk[top]; 
+char pop() 
+{ 
+} 
+if (isEmpty()) 
+return -1; 
+char ch = stk[top]; 
+top--; 
+return ch; 
+void push(char oper) 
+{ 
+if (isFull()) 
+printf("Stack Full!!!!"); 
+else 
+{ 
+	top++; 
+stk[top] = oper;
+} 
+
+ } 
+int checkIfOperand(char ch) 
+{ 
+} 
+return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'); 
+int precedence(char ch) 
+{ 
+} 
+switch (ch) 
+{ 
+case '+': 
+case '-': 
+return 1; 
+case '*': 
+case '/': 
+return 2; 
+case '^': 
+return 3; 
+} 
+return -1; 
+int covertInfixToPostfix(char *expression) 
+{ 
+int i, j; 
+for (i = 0, j = -1; expression[i]; ++i);
+
+ { 
+} 
+if (checkIfOperand(expression[i])) 
+expression[++j] = expression[i]; 
+else if (expression[i] == '(') 
+push(expression[i]); 
+else if (expression[i] == ')') 
+{ 
+} 
+while (!isEmpty() && peek() != '(') 
+expression[++j] = pop(); 
+if (!isEmpty() && peek() != '(') 
+return -1; 
+else 
+pop(); 
+else 
+{ 
+} 
+while (!isEmpty() && precedence(expression[i]) <= precedence(peek())) 
+expression[++j] = pop(); 
+push(expression[i]); 
+while (!isEmpty()) 
+expression[++j] = pop(); 
+expression[++j] = '\0'; 
+printf("%s\n", expression);
+
+} 
+int main() 
+{
+char expression[MAX]; 
+printf("Enter an infix expression: "); 
+scanf("%s", expression); 
+covertInfixToPostfix(expression); 
+return 0; }
+
+
+
+
+
+Write a program to implement Stack Operation 
+
+#include<stdio.h> 
+#include<conio.h> 
+#define N 5 
+int stack[N]; 
+int top =-1; 
+int i,j; 
+void push(); 
+void pop(); 
+void dis(); 
+void update(); 
+int main(){ 
+int ch; 
+do 
+{ 
+printf("\n"); 
+Write a program to implement Stack Operation 
+printf("1.FOR PUSH \n"); 
+printf("2.FOR POP \n"); 
+printf("3.FOR DIS \n"); 
+printf("4.FOR Update \n"); 
+printf("5.FOR Exit \n"); 
+scanf("%d",&ch); 
+switch (ch) 
+{
+ case 1: 
+push(); 
+break; 
+case 2: 
+pop(); 
+break; 
+case 3: 
+dis(); 
+break; 
+case 4: 
+update(); 
+break; 
+default: 
+break; 
+} 
+} while (ch!=5); 
+return 0; 
+} 
+void push(){ 
+if (top==N-1) 
+{ 
+} 
+printf("Stack is full"); 
+else{ 
+int val;
+ printf("Enter the value :"); 
+scanf("%d",&val); 
+top++; 
+stack[top] = val; 
+}} 
+void dis(){ 
+int i; 
+printf("\n"); 
+for ( i = 0; i <=top; i++) 
+{ 
+printf(" %d ",stack[i]); 
+} } 
+void pop(){ 
+if (top==-1) 
+{ 
+} 
+printf("Stackk is EMpty"); 
+else{ 
+int popedel = stack[top]; 
+top--; 
+printf("POPED ELEMENT IS : %d", popedel); 
+dis(); 
+} 
+} 
+void update(){
+ int idx,newval; 
+printf("Enter the Index :"); 
+scanf("%d",&idx); 
+if (idx<0 || idx>top) 
+{ 
+} 
+else{ 
+printf("INVALID INDEX \n"); 
+printf("Enter the value for Update :"); 
+scanf("%d",&newval); 
+stack[idx] = newval; 
+printf(" UPDATED VALUE %d at INDEX %d",newval,idx); 
+dis(); 
+} 
+} 
